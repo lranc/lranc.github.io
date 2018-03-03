@@ -114,7 +114,7 @@
 <meta property="og:site_name" content="Hello, Lranc.">
 <meta property="og:description" content="今天继续前一天写的爬虫,昨晚在爬取到240页的时候,还是因为Ip地址不够而抓取失败了,今天的任务是在删除数据库中的重复数据之后增量抓取.所以文章结构是:1.删除MongoDB中的重复数据2.布隆过滤器增量抓取3.redis初步学习">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-03T07:13:44.587Z">
+<meta property="og:updated_time" content="2018-03-03T08:06:59.532Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="6_5173爬虫优化">
 <meta name="twitter:description" content="今天继续前一天写的爬虫,昨晚在爬取到240页的时候,还是因为Ip地址不够而抓取失败了,今天的任务是在删除数据库中的重复数据之后增量抓取.所以文章结构是:1.删除MongoDB中的重复数据2.布隆过滤器增量抓取3.redis初步学习">
@@ -401,7 +401,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  631
+                  623
                 </span>
               
 
@@ -429,7 +429,8 @@
         <p>今天继续前一天写的爬虫,昨晚在爬取到240页的时候,还是因为Ip地址不够而抓取失败了,今天的任务是在删除数据库中的重复数据之后增量抓取.<br>所以文章结构是:<br>1.删除MongoDB中的重复数据<br>2.布隆过滤器增量抓取<br>3.redis初步学习</p>
 <a id="more"></a>
 <h1 id="简单方法"><a href="#简单方法" class="headerlink" title="简单方法"></a>简单方法</h1><p>在今天的爬取过程中发现,商品的发布时间其实在url里,所以并不需要访问其详情页进去爬取()<br>!!!错误<br>其商品url时间为商品上架时间,而不是商品价格时间的具体表现,而这个爬虫的目的是为了知晓商品的价格走势,故没用</p>
-<h1 id="1-删除MongoDB中的重复数据"><a href="#1-删除MongoDB中的重复数据" class="headerlink" title="1.删除MongoDB中的重复数据:"></a>1.删除MongoDB中的重复数据:</h1><p>由于对MongoDB掌握不是很熟练,是在网上找到的方法.[1][]<br>[1]<a href="http://blog.csdn.net/cloume/article/details/74931998" target="_blank" rel="noopener">http://blog.csdn.net/cloume/article/details/74931998</a><br>该方法是先将数据导出为json,然后删除collection的数据,再新建唯一index,需要注意的是不能在删除重复数据后直接导入,虽然建立索引后插入数据,得到了一个每个url都唯一的collection,但是在之后的增量爬取时,因为index的升降序问题,导致有的数据无法插入,因此有2种方案(其实一样):<br>a.在建立索引后,导入数据,得到一份无重复的数据,再导出,再remove,增量爬取,最后插入第二次导出的数据<br>b.在建立索引后,导入数据,得到一份无重复的数据,新建一份collection,增量爬取,最后合并数据<br>具体代码:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ mongoexport -d 5173_jw3_price -c jw3_goods -o jw3_goods.json</span><br><span class="line">$ mongo</span><br><span class="line">$ use 5173_jw3_price #切换数据库</span><br><span class="line">$ db.jw3_goods.remove(&#123;&#125;) #删除数据</span><br><span class="line">$ db.jw3_goods.createIndex(&#123;goods_url:1&#125;,&#123;unique:true&#125;) #建立以goods_url唯一索引的文档</span><br><span class="line">$ exit</span><br><span class="line"># mongoimport -d 5173_jw3_price -c jw3_goods --upsert jw3_goods.json  #插入数据</span><br></pre></td></tr></table></figure></p>
+<h1 id="1-删除MongoDB中的重复数据"><a href="#1-删除MongoDB中的重复数据" class="headerlink" title="1.删除MongoDB中的重复数据:"></a>1.删除MongoDB中的重复数据:</h1><p>由于对MongoDB掌握不是很熟练,是在网上找到的方法.<a href="http://blog.csdn.net/cloume/article/details/74931998" target="_blank" rel="noopener">网址</a></p>
+<p>该方法是先将数据导出为json,然后删除collection的数据,再新建唯一index,需要注意的是不能在删除重复数据后直接导入,虽然建立索引后插入数据,得到了一个每个url都唯一的collection,但是在之后的增量爬取时,因为index的升降序问题,导致有的数据无法插入,因此有2种方案(其实一样):<br>a.在建立索引后,导入数据,得到一份无重复的数据,再导出,再remove,增量爬取,最后插入第二次导出的数据<br>b.在建立索引后,导入数据,得到一份无重复的数据,新建一份collection,增量爬取,最后合并数据<br>具体代码:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ mongoexport -d 5173_jw3_price -c jw3_goods -o jw3_goods.json</span><br><span class="line">$ mongo</span><br><span class="line">$ use 5173_jw3_price #切换数据库</span><br><span class="line">$ db.jw3_goods.remove(&#123;&#125;) #删除数据</span><br><span class="line">$ db.jw3_goods.createIndex(&#123;goods_url:1&#125;,&#123;unique:true&#125;) #建立以goods_url唯一索引的文档</span><br><span class="line">$ exit</span><br><span class="line"># mongoimport -d 5173_jw3_price -c jw3_goods --upsert jw3_goods.json  #插入数据</span><br></pre></td></tr></table></figure></p>
 <h1 id="2-布隆过滤器增量抓取"><a href="#2-布隆过滤器增量抓取" class="headerlink" title="2.布隆过滤器增量抓取:"></a>2.布隆过滤器增量抓取:</h1><p>对昨天的5173_spider.py文件进行修改,将以下部分以及逻辑判断加入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">#首先将所有已抓取的goods_url导出:</span><br><span class="line">$ mongoexport -d 5173_jw3_price -c jw3_goods -f goods_url -o jw3_goods_url.json</span><br><span class="line">------</span><br><span class="line">import json</span><br><span class="line">import sys</span><br><span class="line">from pybloom import ScalableBloomFilter #导入可动态扩展容量的ScalableBloomFilter</span><br><span class="line"></span><br><span class="line">with open(&apos;jw3_goods_url.json&apos;,&apos;r&apos;) as f:</span><br><span class="line">	url_list = [json.loads(x)[&apos;goods_url&apos;] for x in f.readlines()]  #获取已抓取的url列表</span><br><span class="line">sbf = ScalableBloomFilter(mode=ScalableBloomFilter.SMALL_SET_GROWTH)</span><br><span class="line">for i in url_list:</span><br><span class="line">	sbf.add(i)</span><br><span class="line"></span><br><span class="line">print(sys.getsizeof(sbf))  #56</span><br><span class="line">print(sys.getsizeof(url_list))  #61432</span><br></pre></td></tr></table></figure></p>
 <h1 id="3-redis初步学习"><a href="#3-redis初步学习" class="headerlink" title="3.redis初步学习"></a>3.redis初步学习</h1><p>见下一篇…</p>
 
@@ -465,6 +466,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/03/03/7-redis初步学习/" rel="prev" title="7_redis初步学习">
+                7_redis初步学习 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -543,7 +548,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

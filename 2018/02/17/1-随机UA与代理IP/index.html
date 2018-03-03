@@ -114,7 +114,7 @@
 <meta property="og:site_name" content="Hello, Lranc.">
 <meta property="og:description" content="在抓取爬虫的过程中,往往会遇到各种反爬虫措施现记录下在网上学习到的关于UA和IP的方案">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-01T05:00:40.689Z">
+<meta property="og:updated_time" content="2018-03-03T08:07:06.140Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="1_随机UA与代理IP">
 <meta name="twitter:description" content="在抓取爬虫的过程中,往往会遇到各种反爬虫措施现记录下在网上学习到的关于UA和IP的方案">
@@ -401,7 +401,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  556
+                  549
                 </span>
               
 
@@ -433,7 +433,7 @@
 <h1 id="2-代理IP"><a href="#2-代理IP" class="headerlink" title="2.代理IP"></a>2.代理IP</h1><p>当使用同一个IP大量快速访问某个页面时,网站服务器可能将你判定为爬虫<br>此时可能会出现IP封禁或者出现验证码,输入正确才能继续访问</p>
 <p><font color="red">应对这种反爬虫措施,有以下几种解决方案:</font><br>1).使用VPN,该方法简便,安全性高,实时性高,速度快,但价格较高.<br>2).IP代理商,方法简便,安全性高,可用率大,速度快,稳定性好,但价格较高<br>3).ASDL拨号,ASDL断开重连拨号后分配的IP地址会变化,免费,但效率低,实时性不高<br>4).自建IP代理池,免费,方法较为简便,实时性一般,速度一般,适合个人学习使用.</p>
 <p>自建IP代理池的原理及步骤:<br>1).利用正则表达式,Xpath,CSS等爬取各个ip代理网站的ip地址<br>2).将IP地址保存进数据库(sqlite3,mysql,mongodb,redis等)<br>3).间断持续检测数据库中的ip有效性和速度,当有效IP少于一定数值,进行新一轮爬取<br>4).设计API接口,提供从Pool中获取IP地址,及删除IP地址的接口,以及个性化方案</p>
-<p>网上已有许多成熟的开源IP代理池项目<br>本人的话,使用的是七夜的<font color="blue">IPProxyPool项目</font>([地址][])<br>[地址]:<a href="https://github.com/qiyeboy/IPProxyPool" target="_blank" rel="noopener">https://github.com/qiyeboy/IPProxyPool</a></p>
+<p>网上已有许多成熟的开源IP代理池项目<br>本人的话,使用的是七夜的<font color="blue">IPProxyPool项目</font>(<a href="https://github.com/qiyeboy/IPProxyPool" target="_blank" rel="noopener">地址</a>)</p>
 <p>需要<font color="red">注意</font>的是,随机UA和频繁更换IP有时并不一定有效,甚至是错误的行为<br>实际爬取时,部分网站会请求重定向,或多重定向<br>在这些过程中,在一个会话中更换UA或IP可能会导致出错.</p>
 
       
@@ -550,7 +550,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

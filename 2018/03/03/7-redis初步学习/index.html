@@ -107,17 +107,17 @@
 
 
 
-<meta name="description" content="这两天初步学习了下django,照着文档完成了入门教程…学的粗糙,总的来说是一头雾水的…">
+<meta name="description" content="…前几天回了学校,整理了下生活物品并玩了好久游戏…着实荒废了一阵,今天重拾学习,完成了初步学习redis的计划…真是惭愧. 以下是学习redis局域网部署的详细过程">
 <meta property="og:type" content="article">
-<meta property="og:title" content="4_Django初步学习">
-<meta property="og:url" content="http://yoursite.com/2018/02/23/4-Django初步学习/index.html">
+<meta property="og:title" content="7_redis初步学习">
+<meta property="og:url" content="http://yoursite.com/2018/03/03/7-redis初步学习/index.html">
 <meta property="og:site_name" content="Hello, Lranc.">
-<meta property="og:description" content="这两天初步学习了下django,照着文档完成了入门教程…学的粗糙,总的来说是一头雾水的…">
+<meta property="og:description" content="…前几天回了学校,整理了下生活物品并玩了好久游戏…着实荒废了一阵,今天重拾学习,完成了初步学习redis的计划…真是惭愧. 以下是学习redis局域网部署的详细过程">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-01T05:00:40.690Z">
+<meta property="og:updated_time" content="2018-03-03T08:38:15.797Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="4_Django初步学习">
-<meta name="twitter:description" content="这两天初步学习了下django,照着文档完成了入门教程…学的粗糙,总的来说是一头雾水的…">
+<meta name="twitter:title" content="7_redis初步学习">
+<meta name="twitter:description" content="…前几天回了学校,整理了下生活物品并玩了好久游戏…着实荒废了一阵,今天重拾学习,完成了初步学习redis的计划…真是惭愧. 以下是学习redis局域网部署的详细过程">
 
 
 
@@ -146,13 +146,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/02/23/4-Django初步学习/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/03/03/7-redis初步学习/"/>
 
 
 
 
 
-  <title>4_Django初步学习 | Hello, Lranc.</title>
+  <title>7_redis初步学习 | Hello, Lranc.</title>
   
 
 
@@ -329,7 +329,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/23/4-Django初步学习/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/03/7-redis初步学习/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="lranc">
@@ -346,7 +346,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">4_Django初步学习</h1>
+          <h1 class="post-title" itemprop="name headline">7_redis初步学习</h1>
         
 
         <div class="post-meta">
@@ -358,8 +358,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-23T18:31:12+08:00">
-                2018-02-23
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-03T15:49:21+08:00">
+                2018-03-03
               </time>
             
 
@@ -376,7 +376,7 @@
 
           
           
-             <span id="/2018/02/23/4-Django初步学习/" class="leancloud_visitors" data-flag-title="4_Django初步学习">
+             <span id="/2018/03/03/7-redis初步学习/" class="leancloud_visitors" data-flag-title="7_redis初步学习">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -401,7 +401,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  272
+                  875
                 </span>
               
 
@@ -426,12 +426,19 @@
       
 
       
-        <p>这两天初步学习了下django,照着文档完成了入门教程…<br>学的粗糙,总的来说是一头雾水的…</p>
+        <p>…前几天回了学校,整理了下生活物品并玩了好久游戏…着实荒废了一阵,今天重拾学习,完成了初步学习redis的计划…真是惭愧.</p>
+<p>以下是学习redis局域网部署的详细过程</p>
 <a id="more"></a>
-<p>本来是想着这两天上线一个初步能够使用的查询网站,应用于查询之前所爬取的百度贴吧的骗子信息(未筛选,优化)<br>但没想到django的难度比较大,而马上又要开学找工作了,只好将时间与精力集中与爬虫的学习.</p>
-<p>故而在完成文档的入门教程之后,只能在学习爬虫的闲暇之余尝试能不能照着网上可能存在的模板去实现需求</p>
-<p>接下来几天的任务:<br>1).爬取5173,争取使用分布式redis完成<br>2).实现一个论坛的抓包分析,及布隆过滤器的增量抓取,先从简单的非scrapy架构<br>3).实现应用scrapy,redis分布式,mongodb的集群以及布隆过滤器抓取,项目待构思<br>4).在前两天,争取粗略实现web查询数据库应用(jw3_cheater_lookup)</p>
-<p>加油~</p>
+<h1 id="1-绑定ip"><a href="#1-绑定ip" class="headerlink" title="1.绑定ip"></a>1.绑定ip</h1><p>在尝试连接到局域网下的另一台电脑时,产生了无法连接的错误,仔细查阅了网上各种资料,终于在这个<a href="https://segmentfault.com/q/1010000007547672?_ea=1380149" target="_blank" rel="noopener">网页</a>找到了对redis的conf文件中bind ip的较为详细的解释,解决了问题</p>
+<p>即修改redis安装文件夹下的redis.windows.conf文件:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#修改bind 127.0.0.1 </span><br><span class="line">bind 192.168.0.* 127.0.0.1     (*为局域网IP)</span><br></pre></td></tr></table></figure></p>
+<h1 id="2-测试连接另一台电脑"><a href="#2-测试连接另一台电脑" class="headerlink" title="2.测试连接另一台电脑"></a>2.测试连接另一台电脑</h1><p>连接另一台电脑<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ redis-cli -h 192.168.1.101 -p 6373</span><br></pre></td></tr></table></figure></p>
+<p>出现错误(error) NOAUTH Authentication required.<br>则输入在conf文件中设置的密码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">auth xxxxxx</span><br></pre></td></tr></table></figure></p>
+<p>测试是否通讯成功<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">192.168.1.101:6379&gt; set name lranc</span><br><span class="line">ok</span><br><span class="line">#另一台</span><br><span class="line">127.0.0.1:6379&gt; get name</span><br><span class="line">&apos;lranc&apos;</span><br></pre></td></tr></table></figure></p>
+<h1 id="3-简单的分布式爬虫案例"><a href="#3-简单的分布式爬虫案例" class="headerlink" title="3.简单的分布式爬虫案例"></a>3.简单的分布式爬虫案例</h1><p>此案例根据TTyb的博客爬虫教程的第14章,之前由于虚拟机的问题,放弃了学习,今天苦苦搜寻了有关redis相关教程,发现还是该教程简单易懂,故重温.<a href="http://www.tybai.com/crawler/14_%E5%88%86%E5%B8%83%E5%BC%8F%E6%8A%93%E5%8F%96.html" target="_blank" rel="noopener">网址</a><br>由于对redis的掌握不熟练,故将原blog的redis集群改为了redis单机<br>思路与其blog一致,共有四个文件,insert.py与check.py用于验证redis通讯是否连接成功,并添加需要抓取的url.spider1.py与spider2.py的内容基本一致,只在将html写入文件时,保存的文件名处作出了区分.<br>代码如下<br><code class="highlighter-rouge">insert.py</code>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"># -*- coding: utf-8 -*-</span><br><span class="line">#插入数据脚本</span><br><span class="line">import redis</span><br><span class="line"></span><br><span class="line">#连接redis</span><br><span class="line">redis_client = redis.Redis(host=&apos;192.168.1.101&apos;,port=6379,password=&apos;mima123427&apos;)</span><br><span class="line">redis_client.flushdb()  #清空管道</span><br><span class="line"></span><br><span class="line">#增加url到redis</span><br><span class="line">def pushToRedis(name,valuelist):</span><br><span class="line">	for i in range(50):</span><br><span class="line">		for item in valuelist:</span><br><span class="line">			redis_client.lpush(name,item)</span><br><span class="line"></span><br><span class="line">name = &apos;url&apos;</span><br><span class="line">urlList = [&apos;https://www.baidu.com&apos;,&apos;http://www.tybai.com/&apos;]</span><br><span class="line">pushToRedis(name,urlList)</span><br></pre></td></tr></table></figure></p>
+<p><code class="highlighter-rouge">check.py</code>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># -*- coding: utf-8 -*-</span><br><span class="line">#检查数据脚本</span><br><span class="line">import redis </span><br><span class="line"></span><br><span class="line">#连接redis</span><br><span class="line">redis_client = redis.Redis(host=&apos;192.168.1.101&apos;,port=6379,password=&apos;mima123427&apos;)</span><br><span class="line">name = &apos;url&apos;</span><br><span class="line"></span><br><span class="line">length = redis_client.llen(name)</span><br><span class="line">print(length)</span><br><span class="line">print(redis_client.lrange(name,0,-1))</span><br></pre></td></tr></table></figure></p>
+<p><code class="highlighter-rouge">spider1.py,spider2.py</code>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"># -*- coding: utf-8 -*-</span><br><span class="line">import requests</span><br><span class="line">import socket</span><br><span class="line">import time</span><br><span class="line">import redis</span><br><span class="line"></span><br><span class="line">session = requests.session()</span><br><span class="line">headers = &#123;&quot;User-Agent&quot;: &quot;Mozilla/5.0 (Windows NT 6.3; WOW64; rv:32.0) Gecko/20100101 Firefox/32.0&quot;&#125;</span><br><span class="line"></span><br><span class="line">redis_client = redis.Redis(host=&apos;192.168.1.101&apos;,port=6379,password=&apos;mima123427&apos;)</span><br><span class="line"></span><br><span class="line">#从redis中取出url</span><br><span class="line">def pop_from_redis(name):</span><br><span class="line">	return redis_client.rpop(name).decode()</span><br><span class="line"></span><br><span class="line">def get_html(url):</span><br><span class="line">	#修饰头部</span><br><span class="line">	headers.update(dict(Referer=url))</span><br><span class="line">	#抓取页面</span><br><span class="line">	response = session.get(url=url,headers=headers)</span><br><span class="line">	return response.content.decode(&apos;utf-8&apos;,&apos;ignore&apos;)</span><br><span class="line"></span><br><span class="line">#保持到本地</span><br><span class="line">def save_to_local(html):</span><br><span class="line">	hostname = socket.gethostname()</span><br><span class="line">	ip_name = (&quot;2&quot; + socket.gethostbyname(hostname) + &quot;#&quot; + str(time.time())).replace(&quot;.&quot;, &quot;_&quot;)  #与spider1的不同点</span><br><span class="line">	with open(ip_name+&apos;.html&apos;,&apos;w&apos;,encoding=&apos;utf-8&apos;,errors=&apos;ignore&apos;) as f:</span><br><span class="line">		f.write(html)</span><br><span class="line"></span><br><span class="line">def main():</span><br><span class="line">	name = &apos;url&apos;</span><br><span class="line">	length = redis_client.llen(name)</span><br><span class="line">	for i in range(length):</span><br><span class="line">		url = pop_from_redis(name)</span><br><span class="line">		print(url)</span><br><span class="line">		html = get_html(url)</span><br><span class="line">		save_to_local(html)</span><br><span class="line">		time.sleep(1)</span><br><span class="line"></span><br><span class="line">if __name__ == &apos;__main__&apos;:</span><br><span class="line">	time.sleep(5)</span><br><span class="line">	main()</span><br></pre></td></tr></table></figure></p>
+<p>当出现<code class="highlighter-rouge">AttributeError: ‘NoneType’ object has no attribute ‘decode’</code>则说明redis消息集合中的url已经爬取完毕.<br>可以在两台机子存放的文件夹中看到爬取的html文件,一台爬取了56页面,一台爬取了44个页面.</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>关于redis的初步学习就到此,下一步是继续学习redis在scrapy的应用,以及Django部署骗子查询</p>
 
       
     </div>
@@ -456,8 +463,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/02/21/3-剑网3-交易信息网站构思/" rel="next" title="3_剑网3_交易信息网站构思">
-                <i class="fa fa-chevron-left"></i> 3_剑网3_交易信息网站构思
+              <a href="/2018/02/25/6-5173爬虫优化/" rel="next" title="6_5173爬虫优化">
+                <i class="fa fa-chevron-left"></i> 6_5173爬虫优化
               </a>
             
           </div>
@@ -465,10 +472,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/02/24/5-抓取5173商品信息/" rel="prev" title="5_抓取5173商品信息">
-                5_抓取5173商品信息 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -522,8 +525,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.jpg"
@@ -580,6 +592,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-绑定ip"><span class="nav-number">1.</span> <span class="nav-text">1.绑定ip</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-测试连接另一台电脑"><span class="nav-number">2.</span> <span class="nav-text">2.测试连接另一台电脑</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-简单的分布式爬虫案例"><span class="nav-number">3.</span> <span class="nav-text">3.简单的分布式爬虫案例</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
